@@ -49,7 +49,7 @@
   window.addEventListener('mousemove', function(e){
   x = e.x - ctx.canvas.offsetLeft;
   y = e.y- ctx.canvas.offsetTop;
-  console.log(x);
+  console.log("event= " + x );
   console.log(y);
   draw();
   })
@@ -86,50 +86,26 @@
   window.addEventListener('touchmove', function(e){
   x = e.x - ctx.canvas.offsetLeft;
   y = e.y- ctx.canvas.offsetTop;
-  console.log(x);
+  console.log("x = "+x );
   console.log(y);
   draw();
   })
-
-  window.addEventListener("touchmove", function(e){
-    x = e.x - ctx.canvas.offsetLeft;
-    y = e.y- ctx.canvas.offsetTop;
-    draw();
-    // if (e.keyCode == "66"){
-    // color = "blue";}
-
-    // if (e.keyCode == "89"){
-    // color = "yellow";}  
-
-    // if (e.keyCode == "71"){
-    // color = "green";} 
-    
-    // if (e.keyCode == "82"){
-    // color = "red";} 
-
-    // if (e.keyCode == "38"){
-    // radius = radius + 1 ;} 
-    
-    // if (e.keyCode == "40"){
-    // radius = radius - 1;} 
-
-    // if (e.keyCode == "32")
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
   
-    // if (radius <= 1) 
-    // radius = 1;
-    
-    // if (radius >= 50) 
-    // radius = 50;
+  window.addEventListener("orientationchange", function(e) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   })
-//https://stackoverflow.com/questions/2368784/draw-on-html5-canvas-using-a-mouse
-//https://www.developphp.com/video/JavaScript/Detect-Mouse-Coordinates-on-Canvas
+  
+  function change(e){
+    color = this.value;
+}
+
+document.getElementById("color").onchange = change;
+
 </script>
 
-<p id="canvas"></p>
-
-//color picker<input type="color" name="favcolor" value="#ff0000"> gives the color picker
-
+<p id="canvas"> </p>
+<input type="color" name="favcolor" value=#FF4500> 
+https://jsfiddle.net/wjAdP/
 </body>
 
 </html>
