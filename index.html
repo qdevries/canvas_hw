@@ -49,8 +49,6 @@
   window.addEventListener('mousemove', function(e){
   x = e.x ;
   y = e.y;  
-  //x = e.x - ctx.canvas.offsetLeft;
-  //y = e.y- ctx.canvas.offsetTop;
   console.log("event= " + x );
   console.log(y);
   draw();
@@ -85,15 +83,20 @@
       radius = 50;
   })
 
+  window.addEventListener('touchmove', function (e) {
+      canvas.x = e.touches[0].screenX;
+      canvas.y = e.touches[0].screenY;
+    })
 
   window.addEventListener('touchmove', function(e){
-  x = e.x - e.touches[0].screenX;
-  y = e.y - e.touches[0].screenY;
+  x = e.x;
+  y = e.y;
   console.log("x = "+x );
-  console.log(y);
+  console.log("y = "+y);
   draw();
   })
   
+  //clears on orientation change
   window.addEventListener("orientationchange", function(e) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   })
