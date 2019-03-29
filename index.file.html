@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas Example</title>
+	<style type="text/css">
+		canvas{
+      border: 1px solid black;
+    @media screen and (max-width: 600px){
+      canvas{
+      width:480px;
+      height:480px;
+      }
+    }  
+ 
+    @media screen and (min-width: 601px){
+     canvas{
+      width:720px;
+      height:720px;
+		}
+  } 
+}  
+	</style>
+
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500">
+  An alternative text describing what your canvas displays. 
+  </canvas>
+
+  <script>
+  var canvas = document.querySelector("canvas");
+  var ctx = canvas.getContext("2d");
+  var x = 25;
+  var y = 25;
+  var color = "red";
+  var radius = 10;
+  //canvas
+
+  function draw(){
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+  //draws circle  
+  }
+
+//offsets the currsor to be 0,0 at the corner of the canvas
+  window.addEventListener('mousemove', function(e){
+  x = e.x - ctx.canvas.offsetLeft;
+  y = e.y- ctx.canvas.offsetTop;
+  console.log("event= " + x );
+  console.log(y);
+  draw();
+  })
+
+  window.addEventListener("keyup", function(e){
+    if (e.keyCode == "66"){
+      color = "blue";}
+
+    if (e.keyCode == "89"){
+      color = "yellow";}  
+
+    if (e.keyCode == "71"){
+    color = "green";} 
+    
+    if (e.keyCode == "82"){
+    color = "red";} 
+
+    if (e.keyCode == "38"){
+    radius = radius + 1 ;} 
+    
+    if (e.keyCode == "40"){
+    radius = radius - 1;} 
+
+    if (e.keyCode == "32")
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+    if (radius <= 1) 
+      radius = 1;
+    
+    if (radius >= 50) 
+      radius = 50;
+  })
+
+  window.addEventListener('touchmove', function(e){
+  x = e.x - ctx.canvas.offsetLeft;
+  y = e.y- ctx.canvas.offsetTop;
+  console.log("x = "+x );
+  console.log(y);
+  draw();
+  })
+  
+  window.addEventListener("orientationchange", function(e) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  })
+  
+  function change(e){
+    color = this.value;
+}
+
+document.getElementById("color").onchange = change;
+
+</script>
+
+<p id="canvas"> </p>
+<input type="color" name="favcolor" value=#FF4500> 
+https://jsfiddle.net/wjAdP/
+</body>
+
+</html>
