@@ -24,6 +24,7 @@
 
 </head>
 <body>
+  <input type="color" id="cpk" value=#FF4500> 
 	<canvas id="canvas" width="500" height="500">
   An alternative text describing what your canvas displays. 
   </canvas>
@@ -49,8 +50,8 @@
   window.addEventListener('mousemove', function(e){
   x = e.x ;
   y = e.y;  
-  console.log("event= " + x );
-  console.log(y);
+ // console.log("event= " + x );
+//console.log(y);
   draw();
   })
 
@@ -91,8 +92,8 @@
   window.addEventListener('touchmove', function(e){
   x = e.x;
   y = e.y;
-  console.log("x = "+x );
-  console.log("y = "+y);
+  //console.log("x = "+x );
+  //console.log("y = "+y);
   draw();
   })
   
@@ -105,13 +106,16 @@
     color = this.value;
 }
 
-document.getElementById("color").onchange = change;
+var colorpicker = document.getElementById("cpk");
+colorpicker.addEventListener("change",function(e){
+  color = colorpicker.value;
+}
+) 
+console.log(colorpicker.value)
+
 
 </script>
 
-<p id="canvas"> </p>
-<input type="color" name="favcolor" value=#FF4500> 
-https://jsfiddle.net/wjAdP/
 </body>
 
 </html>
