@@ -17,8 +17,8 @@
 
 
 <body>
-  <input type="color" id="cpk" value=#FF4500> 
 	<canvas id="canvas" width="500" height="500">
+  <input type="color" id="cpk" value=#FF4500> 
 
   coool canvas
   </canvas>
@@ -84,25 +84,25 @@
   })
 
   window.addEventListener('touchmove', function(e) {
-      canvas.x = e.touches[0].screenX;
-      canvas.y = e.touches[0].screenY;
+      x = e.touches[0].screenX;
+      y = e.touches[0].screenY;
       draw();
     //console.log("x = "+x );
     //console.log("y = "+y)
   })
 
 // Get touch position and initiate drawing
-function drawTouch(e) {
-// Get x,y offsets
-if(e.touches) {
-if (e.touches.length == 1) {
-touchX=e.touches[0].clientX - can.getBoundingClientRect().left;
-touchY=e.touches[0].clientY - can.getBoundingClientRect().top;
-  }
-}
-}
+// function drawTouch(e) {
+// // Get x,y offsets
+//   if(e.touches) {
+//   if (e.touches.length == 1) {
+//   touchX=e.touches[0].clientX - can.getBoundingClientRect().left;
+//   touchY=e.touches[0].clientY - can.getBoundingClientRect().top;
+//     }
+//   }
+// }
 // Drawing loop
-if (touched) {draw(touchX,touchY); event.preventDefault();}
+//if (touched) {draw(touchX,touchY); event.preventDefault();}
 
   //clears on orientation change
   window.addEventListener("orientationchange", function(e) {
